@@ -4,16 +4,18 @@
 # or whitespace (' ').
 
 class EmailParser
-  attr_accessor :emails 
 
-  def initialize(emails)
-    @emails = emails
-  end 
+  attr_accessor :email
+  def  initialize(emails)
+    @email = emails
+  end
 
   def parse
-    puts splitEmail = emails.split.collect {|address| address.split(',')} 
-    returnArr = splitEmail.flatten.uniq
-    returnArr
+    email_array = @email.split(/[, ]/).uniq
+    email_array.reject! {|element| element.empty?}
+    email_array
   end
+
 end
+
 
